@@ -78,7 +78,7 @@
     if (!_cancelButton)
     {
         _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _cancelButton.frame = CGRectMake(self.frame.size.width-60, 7, 60, 30);
+        _cancelButton.frame = CGRectMake(self.frame.size.width-60, 7, 60, 25);
         _cancelButton.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [_cancelButton addTarget:self action:@selector(cancelButtonTouched) forControlEvents:UIControlEventTouchUpInside];
         [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
@@ -96,7 +96,7 @@
 {
     if (!_textField)
     {
-        _textField = [[UITextField alloc] initWithFrame:CGRectMake(7, 7, self.frame.size.width-7*2, 30)];
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(7, 7, self.frame.size.width-7*2, 25)];
         _textField.delegate = self;
         _textField.borderStyle = UITextBorderStyleNone;
         _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -107,7 +107,7 @@
         [_textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _textField.borderStyle = UITextBorderStyleNone;
-        _textField.layer.cornerRadius = 15.0f;
+        _textField.layer.cornerRadius = 12.5f;
         _textField.layer.masksToBounds = YES;
         _textField.leftView.contentMode = UIViewContentModeScaleAspectFit;
         _textField.backgroundColor = [UIColor colorWithRed:240.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0];
@@ -155,7 +155,7 @@
     if (_iconAlign == EVNCustomSearchBarIconAlignCenter && ([self.text isKindOfClass:[NSNull class]] || !self.text || [self.text isEqualToString:@""] || self.text.length == 0) && ![_textField isFirstResponder])
     {
         self.iconCenterImgButton.hidden = NO;
-        _textField.frame = CGRectMake(7, 7, self.frame.size.width - 7*2, 30);
+        _textField.frame = CGRectMake(7, 7, self.frame.size.width - 7*2, 25);
         _textField.textAlignment = NSTextAlignmentCenter;
 
         CGSize titleSize; // 输入的内容或者placeholder数据
@@ -163,7 +163,7 @@
         titleSize =  [self.placeholder?:@"" sizeWithAttributes: @{NSFontAttributeName:_textField.font}];
 
 //        NSLog(@"----%f", _textField.frame.size.width);
-        CGFloat x = _textField.frame.size.width/2.f - titleSize.width/2.f - 30;
+        CGFloat x = _textField.frame.size.width/2.f - titleSize.width/2.f - 25;
         [self.iconCenterImgButton setImage:_iconImage forState:UIControlStateNormal];
         _iconCenterImgButton.frame = CGRectMake(x > 0 ?x:0, 0, self.iconImgButton.frame.size.width, self.iconImgButton.frame.size.height);
         _iconCenterImgButton.hidden = x > 0 ? NO : YES;
@@ -341,7 +341,7 @@
     {
         [UIView animateWithDuration:0.1 animations:^{
             _cancelButton.hidden = NO;
-            _textField.frame = CGRectMake(7, 7, _cancelButton.frame.origin.x - 7, 30);
+            _textField.frame = CGRectMake(7, 7, _cancelButton.frame.origin.x - 7, 25);
             // _textField.transform = CGAffineTransformMakeTranslation(-_cancelButton.frame.size.width,0);
         }];
     }
@@ -370,7 +370,7 @@
     {
         [UIView animateWithDuration:0.1 animations:^{
             _cancelButton.hidden = YES;
-            _textField.frame = CGRectMake(7, 7, self.frame.size.width - 7*2, 30);
+            _textField.frame = CGRectMake(7, 7, self.frame.size.width - 7*2, 25);
             // _textField.transform = CGAffineTransformMakeTranslation(-_cancelButton.frame.size.width,0);
         }];
     }
@@ -420,7 +420,7 @@
 {
     if ([object isEqual:self] && [keyPath isEqualToString:@"frame"])
     {
-        // _textField.frame = CGRectMake(7, 7, self.frame.size.width - 7*2, 30);
+        // _textField.frame = CGRectMake(7, 7, self.frame.size.width - 7*2, 25);
         NSLog(@"----%f", self.frame.size.width);
         [self ajustIconWith:_iconAlign];
     }
